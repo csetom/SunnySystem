@@ -3,21 +3,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SunnySystem.Data.Models
 {
+    [System.ComponentModel.DataAnnotations.Schema.Table("customer")]
     public class Customer
     {
-        public int CustomerID { get; set; }
+        public int customerid { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string? Name { get; set; }
+        public string? name { get; set; }
 
         [StringLength(255)]
-        public string? Address { get; set; }
+        public string? address { get; set; }
 
         [StringLength(20)]
-        public string? Phone { get; set; }
+        public string? phone { get; set; }
 
         [StringLength(255)]
-        public string? Email { get; set; }
+        public string? email { get; set; }
     }
 }

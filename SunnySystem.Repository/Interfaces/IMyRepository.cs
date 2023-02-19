@@ -9,7 +9,7 @@ namespace SunnySystem.Repository
     /// Default Repository interface.
     /// </summary>
     /// <typeparam name="T">Generic class. </typeparam>
-    public interface IRepository<T>
+    public interface IMyRepository<T>
         where T : class
     {
         /// <summary>

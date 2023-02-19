@@ -5,10 +5,11 @@ internal class Program
 {
   private static void Main(string[] args)
   {
-    
     using (var ctx = new SunnySystem.Data.SunnySystemDBContext())
     {
-      var CR=new CustomerRepository(ctx); 
+      CustomerRepository CR=new CustomerRepository(ctx); 
+      Console.WriteLine(CR.GetAll().First().name);
+
     }
   }
 
