@@ -11,7 +11,7 @@ internal class Program
       Console.WriteLine(CR.GetAll().First().name);
             /*sajt*/
 
-    }
+        }
   }
 
 }
