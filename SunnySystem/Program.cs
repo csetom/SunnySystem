@@ -9,8 +9,6 @@ internal class Program
     {
       CustomerRepository CR=new CustomerRepository(ctx); 
       Console.WriteLine(CR.GetAll().First().name);
-            /*sajt*/
-
         }
   }
 
