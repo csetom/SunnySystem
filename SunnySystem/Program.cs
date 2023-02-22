@@ -10,7 +10,10 @@ internal class Program
       CustomerRepository CR=new CustomerRepository(ctx); 
       Console.WriteLine(CR.GetAll().First().name);
 
-    }
+            // teszt
+            System.Console.Write("Szevasz te :DD");
+            System.Console.Write("Szevasz te :DD");
+        }
   }
 
 }
