@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnySystem.Data", "SunnySy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnySystem.Repository", "SunnySystem.Repository\SunnySystem.Repository.csproj", "{F7897C1B-3984-4B0E-81FE-E99D665562AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnySystem.Server", "SunnySystemServer\SunnySystemServer.csproj", "{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnySystem.Server", "SunnySystem.Server\SunnySystem.Server.csproj", "{52152407-0FBA-4B48-BBB9-E6A470CCC613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,16 @@ Global
 		{F7897C1B-3984-4B0E-81FE-E99D665562AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7897C1B-3984-4B0E-81FE-E99D665562AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7897C1B-3984-4B0E-81FE-E99D665562AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52152407-0FBA-4B48-BBB9-E6A470CCC613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52152407-0FBA-4B48-BBB9-E6A470CCC613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52152407-0FBA-4B48-BBB9-E6A470CCC613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52152407-0FBA-4B48-BBB9-E6A470CCC613}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE} = {CDA2EB2A-7CCE-499A-ADA8-71024CD9C1BE}
 	EndGlobalSection
 EndGlobal

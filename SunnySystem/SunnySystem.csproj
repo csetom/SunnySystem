@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SunnySystem.Data\SunnySystem.Data.csproj" />
     <ProjectReference Include="..\SunnySystem.Repository\SunnySystem.Repository.csproj" />
+    <ProjectReference Include="..\SunnySystem.Server\SunnySystem.Server.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
