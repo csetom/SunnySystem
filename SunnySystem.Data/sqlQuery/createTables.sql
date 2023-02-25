@@ -22,7 +22,6 @@ CREATE TABLE Warehouse (
     stash INTEGER,
     ComponentId INTEGER,
     Piece INTEGER,
-    FOREIGN KEY (ComponentId) REFERENCES Components (id) ON DELETE CASCADE
 );
 
 ALTER TABLE Warehouse

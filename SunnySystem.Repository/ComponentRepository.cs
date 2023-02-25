@@ -13,22 +13,22 @@ public class ComponentRepository : IComponentRepository
   }
   public int Add(Componentsmain entity)
   {
-    throw new NotImplementedException();
+      return this.dbContext.Add(entity).Entity.Componentid; //Maybe? I am not sure
   }
 
   public void Commit()
   {
-    throw new NotImplementedException();
+      this.dbContext.SaveChanges();
   }
 
   public void Delete(Componentsmain entity)
   {
-    throw new NotImplementedException();
+      this.dbContext.Remove(entity);
   }
 
   public IEnumerable<Componentsmain> Find(Func<Componentsmain, bool> filter)
   {
-    throw new NotImplementedException();
+      return this.GetAll().Where(filter);
   }
 
   public IQueryable<Componentsmain> GetAll()
@@ -38,11 +38,12 @@ public class ComponentRepository : IComponentRepository
 
   public Componentsmain GetByID(int id)
   {
-    throw new NotImplementedException();
+      return this.GetAll()
+                 .SingleOrDefault(component => component.Componentid == id);
   }
 
   public void Update(Componentsmain entity)
   {
-    throw new NotImplementedException();
+      this.dbContext.Update(entity);
   }
 }
