@@ -38,8 +38,7 @@ public class ComponentRepository : IComponentRepository
 
   public Componentsmain GetByID(int id)
   {
-      return this.GetAll()
-                 .SingleOrDefault(component => component.Componentid == id);
+      return this.GetAll().SingleOrDefault(component => component.Componentid == id);
   }
 
   public void Update(Componentsmain entity)
