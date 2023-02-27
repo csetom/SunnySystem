@@ -34,17 +34,9 @@
   </table>
 </body>
 
-<script>
-    function modifyPrice(id) {
-      var newPrice = prompt("Új ár:");
-      if (newPrice != null) {
-        // TODO: Ár módosítása a backend-en
-        alert("The price modified successfully.");
-      }
-    }
-  </script>
+<script src="components.js"></script>
 
-<form>
+<div>
     <label for="component-name">Component's name:</label>
     <input type="text" id="component-name" name="component-name"><br><br>
     <label for="component-price">Price:</label>
@@ -52,5 +44,5 @@
     <label for="component-max-count">Max capacity:</label>
     <input type="text" id="component-max-count" name="component-max-count"><br><br>
     <input type="submit" value="Component add">
-  </form>
+</div>
   

@@ -1,23 +1,48 @@
-
-var loginForm = new Vue({
-  el: '#loginForm',
-  data: {
-    username:"",
-    password:""
+const loginForm = Vue.createApp({
+  data() {
+    return {
+      username: "",
+      password: "",
+ 
+    };
   },
   methods: {
-    submittingPage: function() {
-      // prevent the form from submitting 
-      const username = this.username; 
-      const password = this.password; 
-      // perform some validation here (e.g. check if the username and password are correct) 
-      if (username === 'admin' && password === 'password') { 
-        window.location.href = 'components.html';
-      // redirect to the new page 
-      } else { 
-        alert('Invalid username or password'); 
-      // display an error message 
-      } 
-    }
-  }
+    submittingPage() {
+      axios.post("https://jsonplaceholder.typicode.com/users",{
+        username: this.username,
+        password: this.password,
+      }).then((response) => {
+        // V0: Belephet / nem lephet be
+        // V1: Jogosultsagot
+        // V2: tokent-> felhasznalo azonositasara alkalmas
+/*      if (respone.data.belephet) {
+          console.log("Belephet");
+        } else {
+          console.log("Nem");
+        }
+*/
+        console.log(response);
+      });
+    },
+    
+  },
+
 });
+
+const usersDiv = Vue.createApp({
+  data() {
+    return {
+      users: [],
+      loading: true,
+    };
+  },
+  mounted() {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      this.users = response.data;
+      this.loading = false;
+    });
+  },
+});
+
+loginForm.mount("#loginForm");
+usersDiv.mount("#Users");

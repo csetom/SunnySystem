@@ -5,22 +5,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="login.css">
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </head>
-<body >
+<body>
     <div id="loginForm" method="post" class="login"> 
+				<h1>{{username}}</h1>
+				<span v-if="seen">Now you see me</span>
         <label for="username">Username:</label> 
-        <input type="text"  v-model="username" id="username" name="username"
+        <input type="text" id="username" name="username"
+					v-model="username"
 					v-on:keyup.enter="submittingPage"
-				>  <br> 
+				><br>
         <label for="password">Password:</label> 
 				<input type="password"  id="password" name="password"
-					v-model="password"	
+					v-model="password"
 					v-on:keyup.enter="submittingPage"
-				><br> 
-        <input v-on:click="submittingPage" type="submit" value="Login"> 
-		</div> 
-		<script src="login.js"></script>
+				><br>
+        <input v-on:click="submittingPage" type="submit" value="Login">
+		</div>
 
+		<div id="Users">
+			<li v-for="user in users" :key="user.id">
+				{{ user.name }}
+			</li>
+		</div>
+		<script src="login.js"></script>
 </body>
 </html>
