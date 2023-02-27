@@ -4,64 +4,23 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-			font-size: 16px;
-		}
-		form {
-			background-color: #ffffff;
-			border: 1px solid #cccccc;
-			border-radius: 5px;
-			padding: 20px;
-			margin: 50px auto;
-			max-width: 400px;
-			text-align: center;
-		}
-		input[type=text], input[type=password] {
-			padding: 10px;
-			margin: 5px 0;
-			border: 1px solid #cccccc;
-			border-radius: 5px;
-			width: 100%;
-			box-sizing: border-box;
-		}
-		input[type=submit] {
-			background-color: #4CAF50;
-			color: #ffffff;
-			padding: 10px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			width: 100%;
-			font-size: 16px;
-		}
-		input[type=submit]:hover {
-			background-color: #45a049;
-		}
-	</style>
+	<link rel="stylesheet" href="login.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 </head>
-<body>
-    <form id="loginForm" method="post"> 
+<body >
+    <div id="loginForm" method="post" class="login"> 
         <label for="username">Username:</label> 
-        <input type="text" id="username" name="username"><br> 
-        <label for="password">Password:</label> <input type="password" id="password" name="password"><br> 
-        <input type="submit" value="Login"> 
-    </form> 
-        <script> const form = document.getElementById('loginForm'); 
-        form.addEventListener('submit', (event) => { event.preventDefault(); 
-            // prevent the form from submitting 
-            const username = document.getElementById('username').value; 
-            const password = document.getElementById('password').value; 
-            // perform some validation here (e.g. check if the username and password are correct) 
-            if (username === 'admin' && password === 'password') { window.location.href = 'components.html'; 
-            // redirect to the new page 
-        } 
-            else { alert('Invalid username or password'); 
-            // display an error message 
-        } 
-    }); 
-            </script> 
+        <input type="text"  v-model="username" id="username" name="username"
+					v-on:keyup.enter="submittingPage"
+				>  <br> 
+        <label for="password">Password:</label> 
+				<input type="password"  id="password" name="password"
+					v-model="password"	
+					v-on:keyup.enter="submittingPage"
+				><br> 
+        <input v-on:click="submittingPage" type="submit" value="Login"> 
+		</div> 
+		<script src="login.js"></script>
+
 </body>
 </html>
