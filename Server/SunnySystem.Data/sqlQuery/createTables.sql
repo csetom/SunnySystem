@@ -14,6 +14,13 @@ CREATE TABLE ComponentsMain (
 );
 
 
+CREATE TABLE users (
+    username text NOT NULL,
+    password text NOT NULL,
+    privilage integer NOT NULL,
+    CONSTRAINT "PK_users" PRIMARY KEY (username)
+);
+
 
 CREATE TABLE Warehouse (
     binId SERIAL PRIMARY KEY,
@@ -33,3 +40,7 @@ ON DELETE CASCADE;
 
 INSERT INTO ComponentsMain (Name, Cost, Max) 
 VALUES ('Widget', 10, 100);
+
+INSERT INTO users (
+  "Admin", "Admin", -1,
+)

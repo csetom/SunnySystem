@@ -12,7 +12,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
-    <PackageReference Include="ServiceStack" Version="6.6.0" />
-    <PackageReference Include="ServiceStack.Kestrel" Version="6.6.0" />
   </ItemGroup>
 </Project>

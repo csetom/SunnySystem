@@ -3,6 +3,10 @@
     <ProjectReference Include="..\SunnySystem.Repository\SunnySystem.Repository.csproj" />
     <ProjectReference Include="..\SunnySystem.Data\SunnySystem.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ServiceStack" Version="6.6.0" />
+    <PackageReference Include="ServiceStack.Kestrel" Version="6.6.0" />
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

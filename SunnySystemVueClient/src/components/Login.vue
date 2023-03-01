@@ -13,10 +13,20 @@ export default defineComponent({
   },
   methods: {
     submittingPage() {
-      axios.post("https://jsonplaceholder.typicode.com/users",{
+      
+      axios.post("http://127.0.0.1:1337/login",{
         username: this.username,
         password: this.password,
-      }).then((response) => {
+      }
+      //  {
+      //   headers: {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Access-Control-Allow-Methods': 'POST',
+      //   'Access-Control-Allow-Headers': 'Content-Type'
+      //   }
+      // } 
+      ).then((response) => {
         // V0: Belephet / nem lephet be
         // V1: Jogosultsagot
         // V2: tokent-> felhasznalo azonositasara alkalmas
@@ -39,12 +49,12 @@ export default defineComponent({
 				<span v-if="seen">Now you see me</span>
         <label for="username">Username:</label> 
         <input type="text" id="username" name="username"
-					v-bind="username"
+					v-model="username"
 					v-on:keyup.enter="submittingPage"
 				><br>
         <label for="password">Password:</label> 
 				<input type="password"  id="password" name="password"
-					v-bind="password"
+					v-model="password"
 					v-on:keyup.enter="submittingPage"
 				><br>
         <input v-on:click="submittingPage" type="submit" value="Login">

@@ -3,11 +3,16 @@ using SunnySystem.Repository;
 using SunnySystem.Data.Models;
 public class SunnySystemServer
 {
-  private readonly IMyRepository<Componentsmain> componentRepository;
-  public SunnySystemServer(IMyRepository<Componentsmain> IcomponentsMainRepository) => componentRepository = IcomponentsMainRepository;
-  public void WriteAllComponents() {
-      Console.WriteLine(componentRepository.GetAll().First().ToString());
+  public SunnySystemServer(IMyRepository<Componentsmain> IcomponentsMainRepository, IMyRepository<User> IUserRepo) {
+      var listeningOn =  "http://*:1337/";
+      //componentRepository = IcomponentsMainRepository;
+      Logika logika = new Logika(IcomponentsMainRepository,IUserRepo);
+      var appHost = new AppHost(logika)
+        .Init()
+        .Start(listeningOn);
+
+      Console.WriteLine("AppHost Created at {0}, listening on {1}",
+      DateTime.Now, listeningOn);
+      Console.ReadKey();
   }
-
-
 }

@@ -11,16 +11,9 @@ internal class Program
 
     using (var ctx = new SunnySystem.Data.LnghydvrContext())
     {
-      SunnySystemServer server  = new SunnySystemServer( new ComponentRepository(ctx));
-      server.WriteAllComponents();
-        var listeningOn = args.Length == 0 ? "http://*:1337/" : args[0];
-        var appHost = new AppHost()
-            .Init()
-            .Start(listeningOn);
-
-        Console.WriteLine("AppHost Created at {0}, listening on {1}", 
-            DateTime.Now, listeningOn);    
-        Console.ReadKey();
+      SunnySystemServer server  = new SunnySystemServer( new ComponentRepository(ctx),new UserRepository(ctx));
+    //  var listeningOn = args.Length == 0 ? "http://*:1337/" : args[0];
+     
     }
   }
 

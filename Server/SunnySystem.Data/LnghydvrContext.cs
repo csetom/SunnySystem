@@ -82,6 +82,7 @@ public partial class LnghydvrContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_warehouse_componentid");
         });
+        modelBuilder.Entity<User>();
 
         OnModelCreatingPartial(modelBuilder);
     }
