@@ -1,6 +1,25 @@
-<script setup lang="ts">
+<script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import Login from './components/Login.vue'
+
+export default {
+        name: 'App',
+        data() {
+            return {
+                authenticated: false,
+                // this is only for testing purposes no actual app will have this
+                // an api call will validate user credentials
+            }
+        },
+        methods: {
+            setAuthenticated(status:boolean) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
+    }
 </script>
 
 <template>
@@ -8,12 +27,16 @@ import Login from './components/Login.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+
+    
     </div>
   </header>
 
   <main>
-    <login />
+    <router-link to="/">Home</router-link>
+      <router-link v-if="authenticated" to="/secure">Secure</router-link>
+      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+      <router-link v-else to="/login">Login</router-link>
   </main>
 </template>
 

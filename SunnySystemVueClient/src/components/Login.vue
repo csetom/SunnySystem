@@ -1,9 +1,46 @@
-<script lang="ts">
-import { Axios } from 'axios';
+<!-- <script lang="ts">
+import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
+  name: "Login",
+  setup() {
+    const username = ref('');
+    const password = ref('');
+    const router = useRouter();
+    const submittingPage = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:1337/login', {
+          username: username.value,
+          password: password.value,
+        });
+        if (typeof response.data.user !== 'undefined') {
+          // Login successful, navigate to the next page
+            //this.$emit("authenticated", true);
+            router.replace({ name: "home" });      
+          } else {
+          console.log('Nem');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    return {
+      username,
+      password,
+      submittingPage,
+    };
+  },
+});
+</script> -->
+
+
+<script lang="ts">
+import axios from 'axios';
+
+export default {
   data() {
     return {
       username: "",
@@ -13,7 +50,6 @@ export default defineComponent({
   },
   methods: {
     submittingPage() {
-      
       axios.post("http://127.0.0.1:1337/login",{
         username: this.username,
         password: this.password,
@@ -30,23 +66,22 @@ export default defineComponent({
         // V0: Belephet / nem lephet be
         // V1: Jogosultsagot
         // V2: tokent-> felhasznalo azonositasara alkalmas
-/*      if (respone.data.belephet) {
-          console.log("Belephet");
+      if (typeof response.data.user!= "undefined") {
+          
+        this.$router.replace({ name: "home" });      
         } else {
           console.log("Nem");
         }
-*/
-        console.log(response);
       });
     },
         
   },
-});
-
+}; 
 </script>
+
 <template>
+  <div id="login">
 			<h1>{{username}}</h1>
-				<span v-if="seen">Now you see me</span>
         <label for="username">Username:</label> 
         <input type="text" id="username" name="username"
 					v-model="username"
@@ -58,6 +93,7 @@ export default defineComponent({
 					v-on:keyup.enter="submittingPage"
 				><br>
         <input v-on:click="submittingPage" type="submit" value="Login">
+      </div>
 </template>
 
 <style scoped>
