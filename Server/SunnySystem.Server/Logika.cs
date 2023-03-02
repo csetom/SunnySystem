@@ -18,6 +18,14 @@ public class Logika
 Console.WriteLine(username+":"+password);
     return userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
   }
-  public IMyRepository<Componentsmain> IcomponentsMainRepository { get; }
-  public IMyRepository<UserRepository> UserRepo { get; }
+
+  internal IList<Componentsmain> GetComponentsList(string filter)
+  {
+    
+    return componentRepository.GetAll().ToList();
+  }
+
+   
+  // public IMyRepository<Componentsmain> IcomponentsMainRepository { get; }
+  // public IMyRepository<UserRepository> UserRepo { get; }
 }

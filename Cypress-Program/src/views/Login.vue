@@ -28,12 +28,10 @@ import axios from 'axios'
         },
         methods: {
             login() {
-              axios.post("http://127.0.0.1:1337/login",{
+             axios.post("http://localhost:1337/login",{
                 username: this.input.username,
                 password: this.input.password,
               }).then(respone=>{
-
-
                 if(this.input.username != "" && this.input.password != "") {
                     // This should actually be an api call not a check against this.$parent.mockAccount
                     console.log(respone.data);
@@ -41,7 +39,7 @@ import axios from 'axios'
                         this.$emit("authenticated", true);
                         this.$router.replace({ name: "Secure" });
                     } else {
-                        console.log("The username and / or password is incorrect");
+                        alert("The username and / or password is incorrect");
                     }
                 } else {
                     console.log("A username and password must be present");

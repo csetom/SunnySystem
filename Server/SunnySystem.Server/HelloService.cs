@@ -3,7 +3,7 @@ using ServiceStack;
 using SunnySystem.Data.Models;
 using SunnySystem.Server;
 
-[Route("/hello/{Name}")]
+    [Route("/hello/{Name}")]
     public class Hello {
         public string Name { get; set; }
     }
@@ -14,6 +14,8 @@ using SunnySystem.Server;
         public string username { get; set; }
         public string password {get; set; }
     }
+
+
 
     public class LoginResponse {
         public User user { get; set; }
@@ -33,7 +35,12 @@ using SunnySystem.Server;
             return new HelloResponse { Result = "Hello, " + request.Name };
         }
         public object Post(Login request) {
-Console.WriteLine("WORKING");
+//Console.WriteLine("WORKING");
             return new LoginResponse { user = this.logika.FindUser(request.username,request.password)};
+        }
+        public object Get(ComponentsList request) {
+            return new ComponentsListResponse {
+                componets = this.logika.GetComponentsList(request.filter)
+            };
         }
     }
