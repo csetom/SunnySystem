@@ -9,27 +9,24 @@
 	<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
-    <div id="loginForm" method="post" class="login"> 
-				<h1>{{username}}</h1>
-				<span v-if="seen">Now you see me</span>
-        <label for="username">Username:</label> 
-        <input type="text" id="username" name="username"
-					v-model="username"
-					v-on:keyup.enter="submittingPage"
-				><br>
-        <label for="password">Password:</label> 
-				<input type="password"  id="password" name="password"
-					v-model="password"
-					v-on:keyup.enter="submittingPage"
-				><br>
-        <input v-on:click="submittingPage" type="submit" value="Login">
-		</div>
-
-		<div id="Users">
-			<li v-for="user in users" :key="user.id">
-				{{ user.name }}
-			</li>
-		</div>
-		<script src="login.js"></script>
+	<div id="loginForm" class="login">
+		<h1>{{ username }}</h1>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username"
+			v-model="username"
+			@keyup.enter="submittingPage">
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password"
+			v-model="password"
+			@keyup.enter="submittingPage">
+		<input type="submit" value="Login" @click="submittingPage">
+		<span v-if="seen">Now you see me</span>
+	</div>
+	<div id="Users">
+		<li v-for="user in users" :key="user.id">{{ user.name }}</li>
+	</div>
+	
+	<script src="login.js"></script>
+		
 </body>
 </html>
