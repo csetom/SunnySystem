@@ -25,6 +25,18 @@ Console.WriteLine(username+":"+password);
     return componentRepository.GetAll().ToList();
   }
 
+  public void UpdateComponentCost(int id, int newCost)
+{
+    var component = componentRepository.GetByID(id);
+    if (component != null)
+    {
+        component.Cost = newCost;
+        componentRepository.Update(component);
+    }
+}
+
+
+
    
   // public IMyRepository<Componentsmain> IcomponentsMainRepository { get; }
   // public IMyRepository<UserRepository> UserRepo { get; }

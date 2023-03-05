@@ -15,6 +15,12 @@ using SunnySystem.Server;
         public string password {get; set; }
     }
 
+    [Route("/updatecomponentprice", "PUT")]
+    public class UpdateComponentCost
+    {   public int Id { get; set; }
+        public int NewCost { get; set; }
+    }
+
 
 
     public class LoginResponse {
@@ -43,4 +49,10 @@ using SunnySystem.Server;
                 components = this.logika.GetComponentsList(request.filter)
             };
         }
-    }
+
+    /*public object Put(UpdateComponentCost request)
+    {
+        this.logika.UpdateComponentCost(request.Id, request.NewCost);
+        return new HttpResult(HttpStatusCode.OK);
+    };*/
+}
