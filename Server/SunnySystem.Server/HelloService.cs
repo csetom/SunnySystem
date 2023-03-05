@@ -40,7 +40,7 @@ using SunnySystem.Server;
         }
         public object Get(ComponentsList request) {
             return new ComponentsListResponse {
-                componets = this.logika.GetComponentsList(request.filter)
+                components = this.logika.GetComponentsList(request.filter)
             };
         }
     }
