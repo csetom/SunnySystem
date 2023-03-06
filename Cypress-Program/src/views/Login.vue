@@ -44,6 +44,8 @@ import axios from 'axios'
                 } else {
                     console.log("A username and password must be present");
                 }
+                }).catch(err=>{
+                    console.error(err);
                 })
             }
         }
