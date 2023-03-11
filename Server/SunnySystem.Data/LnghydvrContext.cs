@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using SunnySystem.Data.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace SunnySystem.Data;
 
-public partial class LnghydvrContext : DbContext
+public partial class SunnySystemDbContext : DbContext
 {
-    public LnghydvrContext()
+    public SunnySystemDbContext()
     {
     }
 
-    public LnghydvrContext(DbContextOptions<LnghydvrContext> options)
+    public SunnySystemDbContext(DbContextOptions<SunnySystemDbContext> options)
         : base(options)
     {
+      //   this.Database.EnsureCreated();
     }
 
     public virtual DbSet<Component> Components { get; set; }
@@ -22,13 +25,22 @@ public partial class LnghydvrContext : DbContext
     public virtual DbSet<Project> Projects { get; set; }
     public virtual DbSet<User> Users { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+        string solutionFolder = Directory.GetParent(path: Directory.GetCurrentDirectory()).FullName;
+        string dbFilePath =  Path.Combine(solutionFolder,"SunnySystem.Data","SunnySystem.db");    
+        string connectionString = $"Data Source={dbFilePath}";
+        optionsBuilder.UseSqlite(connectionString).LogTo(Console.WriteLine); // Ide kell majd better logging
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Server=dumbo.db.elephantsql.com;Database=lnghydvr;User Id=lnghydvr;Password=62M5jDVpzFHriCJFUSH57p46JD3eWj9R;Port=5432");
+  
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        if (modelBuilder is null)
+        {
+            throw new ArgumentNullException(nameof(modelBuilder));
+        }
+
         modelBuilder
             .HasPostgresExtension("pg_catalog", "plv8")
             .HasPostgresExtension("btree_gin")
@@ -93,8 +105,8 @@ public partial class LnghydvrContext : DbContext
             .HasConstraintName("fk_project_customerid");
 ;
         });
-
-        modelBuilder.Entity<User>();
+        User user= new User("Admin","Admin",-1);
+        modelBuilder.Entity<User>().HasData(user);
 
         OnModelCreatingPartial(modelBuilder);
     }

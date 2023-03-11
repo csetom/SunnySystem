@@ -16,7 +16,15 @@ public class Logika
 
   public User FindUser(String username, String password) {
 Console.WriteLine(username+":"+password);
-    return userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
+    try {
+      User user=userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
+      Console.WriteLine(user.ToString());
+      return user;
+
+    } catch(Exception err) {
+      Console.Error.WriteLine(err);
+    }
+    return null;
   }
 
   internal IList<Component> GetComponentsList(string filter)
