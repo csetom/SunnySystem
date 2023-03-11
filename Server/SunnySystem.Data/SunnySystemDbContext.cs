@@ -81,11 +81,11 @@ public partial class SunnySystemDbContext : DbContext
 
         modelBuilder.Entity<Bin>(entity =>
         {
-            entity.HasKey(e => e.Binid).HasName("warehouse_pkey");
+            entity.HasKey(e => e.BinId).HasName("warehouse_pkey");
 
             entity.ToTable("warehouse");
 
-            entity.Property(e => e.Binid).HasColumnName("binid");
+            entity.Property(e => e.BinId).HasColumnName("binid");
             entity.Property(e => e.Column).HasColumnName("column");
             entity.Property(e => e.Componentid).HasColumnName("componentid");
             entity.Property(e => e.Piece).HasColumnName("piece");

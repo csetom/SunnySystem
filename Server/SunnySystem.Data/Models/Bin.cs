@@ -5,7 +5,7 @@ namespace SunnySystem.Data.Models;
 
 public partial class Bin
 {
-    public int Binid { get; set; }
+    public int BinId { get; set; }
 
     public int? Row { get; set; }
 

@@ -27,7 +27,7 @@ public partial class Component
 
             foreach (var bin in Bins)
             {
-                sb.Append($"\tBin ID: {bin.Binid}, Row: {bin.Row}, Column: {bin.Column}, " +
+                sb.Append($"\tBin ID: {bin.BinId}, Row: {bin.Row}, Column: {bin.Column}, " +
                         $"Stash: {bin.Stash}, Piece: {bin.Piece}\n");
             }
         }
