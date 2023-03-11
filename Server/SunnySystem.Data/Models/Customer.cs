@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SunnySystem.Data.Models;
 
 
-[Table("users")]
+[Table("customers")]
 public class Customer
 {
     [Column("customer_id")]
