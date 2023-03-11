@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunnySystem.Data.Models;
 
-public partial class Componentsmain
+public partial class Component
 {
     public int Componentid { get; set; }
 
@@ -14,21 +14,21 @@ public partial class Componentsmain
 
     public int? Max { get; set; }
 
-    public virtual ICollection<Warehouse> Warehouses { get; } = new List<Warehouse>();
+    public virtual ICollection<Bin> Bins { get; } = new List<Bin>();
 
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
         sb.Append($"Component ID: {Componentid}, Name: {Name ?? "N/A"}, Cost: {Cost ?? 0}, Max: {Max ?? 0}\n");
 
-        if (Warehouses.Count > 0)
+        if (Bins.Count > 0)
         {
             sb.Append("Warehouses:\n");
 
-            foreach (var warehouse in Warehouses)
+            foreach (var bin in Bins)
             {
-                sb.Append($"\tBin ID: {warehouse.Binid}, Row: {warehouse.Row}, Column: {warehouse.Column}, " +
-                        $"Stash: {warehouse.Stash}, Piece: {warehouse.Piece}\n");
+                sb.Append($"\tBin ID: {bin.Binid}, Row: {bin.Row}, Column: {bin.Column}, " +
+                        $"Stash: {bin.Stash}, Piece: {bin.Piece}\n");
             }
         }
         else

@@ -16,9 +16,9 @@ public partial class LnghydvrContext : DbContext
     {
     }
 
-    public virtual DbSet<Componentsmain> Componentsmains { get; set; }
+    public virtual DbSet<Component> Components { get; set; }
 
-    public virtual DbSet<Warehouse> Warehouses { get; set; }
+    public virtual DbSet<Bin> Bins { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -50,7 +50,7 @@ public partial class LnghydvrContext : DbContext
             .HasPostgresExtension("uuid-ossp")
             .HasPostgresExtension("xml2");
 
-        modelBuilder.Entity<Componentsmain>(entity =>
+        modelBuilder.Entity<Component>(entity =>
         {
             entity.HasKey(e => e.Componentid).HasName("componentsmain_pkey");
 
@@ -64,7 +64,7 @@ public partial class LnghydvrContext : DbContext
                 .HasColumnName("name");
         });
 
-        modelBuilder.Entity<Warehouse>(entity =>
+        modelBuilder.Entity<Bin>(entity =>
         {
             entity.HasKey(e => e.Binid).HasName("warehouse_pkey");
 
@@ -77,7 +77,7 @@ public partial class LnghydvrContext : DbContext
             entity.Property(e => e.Row).HasColumnName("row");
             entity.Property(e => e.Stash).HasColumnName("stash");
 
-            entity.HasOne(d => d.Component).WithMany(p => p.Warehouses)
+            entity.HasOne(d => d.Component).WithMany(p => p.Bins)
                 .HasForeignKey(d => d.Componentid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_warehouse_componentid");

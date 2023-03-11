@@ -10,6 +10,6 @@ namespace SunnySystem
 
   public class ComponentsListResponse
   {
-    public IList<Componentsmain> components{get; set;}
+    public IList<Component> components{get; set;}
   }
 }

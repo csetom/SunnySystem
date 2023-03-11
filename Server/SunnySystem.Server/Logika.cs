@@ -5,10 +5,10 @@ namespace SunnySystem.Server;
 
 public class Logika
 {
-  private readonly IMyRepository<Componentsmain> componentRepository;
+  private readonly IMyRepository<Component> componentRepository;
   private readonly IMyRepository<User> userRepository;
 
-  public Logika(IMyRepository<Componentsmain> icomponentsMainRepository, IMyRepository<User> userRepo)
+  public Logika(IMyRepository<Component> icomponentsMainRepository, IMyRepository<User> userRepo)
   {
     this.componentRepository = icomponentsMainRepository;
     this.userRepository = userRepo;
@@ -19,7 +19,7 @@ Console.WriteLine(username+":"+password);
     return userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
   }
 
-  internal IList<Componentsmain> GetComponentsList(string filter)
+  internal IList<Component> GetComponentsList(string filter)
   {
     
     return componentRepository.GetAll().ToList();

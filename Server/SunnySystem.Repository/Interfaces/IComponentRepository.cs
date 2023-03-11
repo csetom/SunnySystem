@@ -5,7 +5,7 @@ namespace SunnySystem.Repository
   /// <summary>
   /// Utas repository interface.
   /// </summary>
-  public interface IComponentRepository : IMyRepository<Componentsmain>
+  public interface IComponentRepository : IMyRepository<Component>
     {
     }
 }
