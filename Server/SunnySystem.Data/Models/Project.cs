@@ -17,7 +17,9 @@ public class Project
     [Column("end_date")]
     public DateTime EndDate { get; set; }
     [Column("customer_id")]
-    public int CustomerId {get;set;}
+    public int CustomerId { get; set; }
+    public virtual Customer Customer { get; set; }
+
 }
 
 }

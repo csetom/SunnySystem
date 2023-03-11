@@ -17,8 +17,11 @@ public partial class LnghydvrContext : DbContext
     }
 
     public virtual DbSet<Component> Components { get; set; }
-
     public virtual DbSet<Bin> Bins { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<Project> Projects { get; set; }
+    public virtual DbSet<User> Users { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -54,7 +57,7 @@ public partial class LnghydvrContext : DbContext
         {
             entity.HasKey(e => e.Componentid).HasName("componentsmain_pkey");
 
-            entity.ToTable("componentsmain");
+            entity.ToTable("components");
 
             entity.Property(e => e.Componentid).HasColumnName("componentid");
             entity.Property(e => e.Cost).HasColumnName("cost");
@@ -82,6 +85,15 @@ public partial class LnghydvrContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_warehouse_componentid");
         });
+
+        modelBuilder.Entity<Project>(entity=>{
+            entity.HasOne<Customer>(p => p.Customer).WithMany(c=> c.Projects)
+            .HasForeignKey(e => e.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict)
+            .HasConstraintName("fk_project_customerid");
+;
+        });
+
         modelBuilder.Entity<User>();
 
         OnModelCreatingPartial(modelBuilder);
