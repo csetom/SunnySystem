@@ -11,7 +11,7 @@ public class ComponentRepository : IComponentRepository
   {
       this.dbContext = dbContext;
   }
-  public int Add(Componentsmain entity)
+  public int Add(Component entity)
   {
       return this.dbContext.Add(entity).Entity.Componentid; //Maybe? I am not sure
   }
@@ -21,27 +21,27 @@ public class ComponentRepository : IComponentRepository
       this.dbContext.SaveChanges();
   }
 
-  public void Delete(Componentsmain entity)
+  public void Delete(Component entity)
   {
       this.dbContext.Remove(entity);
   }
 
-  public IEnumerable<Componentsmain> Find(Func<Componentsmain, bool> filter)
+  public IEnumerable<Component> Find(Func<Component, bool> filter)
   {
       return this.GetAll().Where(filter);
   }
 
-  public IQueryable<Componentsmain> GetAll()
+  public IQueryable<Component> GetAll()
   {
-      return this.dbContext.Set<Componentsmain>();
+      return this.dbContext.Set<Component>();
   }
 
-  public Componentsmain GetByID(int id)
+  public Component GetByID(int id)
   {
       return this.GetAll().SingleOrDefault(component => component.Componentid == id);
   }
 
-  public void Update(Componentsmain entity)
+  public void Update(Component entity)
   {
       this.dbContext.Update(entity);
   }

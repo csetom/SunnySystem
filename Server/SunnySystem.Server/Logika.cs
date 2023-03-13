@@ -5,21 +5,38 @@ namespace SunnySystem.Server;
 
 public class Logika
 {
-  private readonly IMyRepository<Componentsmain> componentRepository;
+  private readonly IMyRepository<Bin> binRepository;
+  private readonly IMyRepository<Component> componentRepository;
+  private readonly IMyRepository<Customer> customerRepository;
+  private readonly IMyRepository<Project> projectRepository;
   private readonly IMyRepository<User> userRepository;
 
-  public Logika(IMyRepository<Componentsmain> icomponentsMainRepository, IMyRepository<User> userRepo)
-  {
-    this.componentRepository = icomponentsMainRepository;
-    this.userRepository = userRepo;
-  }
-
+    public Logika(IMyRepository<Bin> binRepo,
+                  IMyRepository<Component> componentRepo,
+                  IMyRepository<Customer> customerRepo,
+                  IMyRepository<Project> projectRepo,
+                  IMyRepository<User> userRepo)
+    {
+        binRepository = binRepo;
+        componentRepository = componentRepo;
+        customerRepository = customerRepo;
+        projectRepository = projectRepo;
+        userRepository = userRepo;
+    }
   public User FindUser(String username, String password) {
 Console.WriteLine(username+":"+password);
-    return userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
+    try {
+      User user=userRepository.Find((user)=>{return (user.Username==username&&user.Password==password);}).FirstOrDefault();
+      Console.WriteLine(user.ToString());
+      return user;
+
+    } catch(Exception err) {
+      Console.Error.WriteLine(err);
+    }
+    return null;
   }
 
-  internal IList<Componentsmain> GetComponentsList(string filter)
+  internal IList<Component> GetComponentsList(string filter)
   {
     
     return componentRepository.GetAll().ToList();

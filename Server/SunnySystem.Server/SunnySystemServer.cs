@@ -3,10 +3,15 @@ using SunnySystem.Repository;
 using SunnySystem.Data.Models;
 public class SunnySystemServer
 {
-  public SunnySystemServer(IMyRepository<Componentsmain> IcomponentsMainRepository, IMyRepository<User> IUserRepo) {
+
+  public SunnySystemServer(IMyRepository<Bin> binRepo,
+                  IMyRepository<Component> componentRepo,
+                  IMyRepository<Customer> customerRepo,
+                  IMyRepository<Project> projectRepo,
+                  IMyRepository<User> userRepo) {
       var listeningOn =  "http://*:1337/";
       //componentRepository = IcomponentsMainRepository;
-      Logika logika = new Logika(IcomponentsMainRepository,IUserRepo);
+      Logika logika = new Logika(binRepo,componentRepo,customerRepo,projectRepo,userRepo);
       var appHost = new AppHost(logika)
         .Init()
         .Start(listeningOn);

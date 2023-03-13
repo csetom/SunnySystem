@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SunnySystem.Data.Models;
 
-public partial class Warehouse
+public partial class Bin
 {
-    public int Binid { get; set; }
+    public int BinId { get; set; }
 
     public int? Row { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Warehouse
 
     public int? Piece { get; set; }
 
-    public virtual Componentsmain? Component { get; set; }
+    public virtual Component? Component { get; set; }
 }

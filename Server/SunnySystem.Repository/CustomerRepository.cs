@@ -12,24 +12,25 @@ public class CustomerRepository : ICustomerRepository
   {
       this.dbContext = dbContext;
   }
+
   public int Add(Customer entity)
   {
-    throw new NotImplementedException();
+      return 1; //Maybe? I am not sure
   }
 
   public void Commit()
   {
-    throw new NotImplementedException();
+      this.dbContext.SaveChanges();
   }
 
   public void Delete(Customer entity)
   {
-    throw new NotImplementedException();
+      this.dbContext.Remove(entity);
   }
 
   public IEnumerable<Customer> Find(Func<Customer, bool> filter)
   {
-    throw new NotImplementedException();
+      return this.GetAll().Where(filter);
   }
 
   public IQueryable<Customer> GetAll()
@@ -37,13 +38,13 @@ public class CustomerRepository : ICustomerRepository
       return this.dbContext.Set<Customer>();
   }
 
-  public Customer GetByID(int id)
+  public Customer GetByID(int CustomerId)
   {
-    throw new NotImplementedException();
+      return this.GetAll().SingleOrDefault(entity => entity.CustomerID == CustomerId);
   }
 
   public void Update(Customer entity)
   {
-    throw new NotImplementedException();
+      this.dbContext.Update(entity);
   }
 }

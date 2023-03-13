@@ -24,5 +24,9 @@ public partial class User
   public String Password { get; set; }
   [Column("privilage")]
   public int Privilage {get; set;}
-
+  
+  public override string ToString()
+  {
+    return $"Username: {Username}, Password: {Password}, Privilage: {Privilage}";
+  }
 }
