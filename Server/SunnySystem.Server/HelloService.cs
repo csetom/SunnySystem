@@ -16,10 +16,11 @@ using SunnySystem.Server;
     }
 
     [Route("/updatecomponentprice", "PUT")]
-    public class UpdateComponentCost
-    {   public int Id { get; set; }
-        public int NewCost { get; set; }
+    public class UpdateComponentPrice
+    {   public int id { get; set; }
+        public int newCost { get; set; }
     }
+
 
 
 
@@ -50,9 +51,14 @@ using SunnySystem.Server;
             };
         }
 
-    /*public object Put(UpdateComponentCost request)
+    public void Put(UpdateComponentPrice request)
     {
-        this.logika.UpdateComponentCost(request.Id, request.NewCost);
-        return new HttpResult(HttpStatusCode.OK);
-    };*/
+        this.logika.UpdateComponentPrice(request.id, request.newCost);
+    }
+
+    public object Get(ProjectsList request) {
+            return new ProjectsListResponse {
+                projects = this.logika.GetProjectsList(request.filter)
+            };
+        }
 }

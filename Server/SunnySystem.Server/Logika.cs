@@ -42,7 +42,7 @@ Console.WriteLine(username+":"+password);
     return componentRepository.GetAll().ToList();
   }
 
-  public void UpdateComponentCost(int id, int newCost)
+  public void UpdateComponentPrice(int id, int newCost)
 {
     var component = componentRepository.GetByID(id);
     if (component != null)
@@ -52,6 +52,23 @@ Console.WriteLine(username+":"+password);
     }
 }
 
+  public void ComponentAdd(string name, int cost, int max, int componentid)
+  {
+    var component = new Component
+    {
+      Componentid = componentid,
+      Name = name,
+      Cost = cost,
+      Max = max
+    };
+    componentRepository.Add(component);
+}
+
+  internal IList<Project> GetProjectsList(string filter)
+  {
+    
+    return projectRepository.GetAll().ToList();
+  }
 
 
    
