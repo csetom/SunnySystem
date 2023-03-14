@@ -13,5 +13,5 @@ namespace SunnySystem
     public IList<Project> projects{get; set;}
   }
 
-  /*ez itt egy listazas*/
+  /*ez itt egy listazas talan*/
 }
